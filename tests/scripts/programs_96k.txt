@@ -1,0 +1,16 @@
+sr 96000
+block 1024
+open
+program 1
+midi 0 144 84 100
+run 20
+program 2
+run 20
+program 4
+run 20
+midi 0 144 16 100
+run 40
+midi 0 128 84 0
+run 40
+midi 0 128 16 0
+run 20

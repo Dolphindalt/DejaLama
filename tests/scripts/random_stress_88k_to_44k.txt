@@ -1,0 +1,3499 @@
+sr 88200
+block 128
+open
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 46 176 1 124
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 127 144 81 28
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 98 176 74 87
+run 1
+midi 120 224 43 112
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 22 176 7 55
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 122 144 81 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 18 144 89 103
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 50 176 7 33
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+param 9 0.6957
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 33 176 12 61
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 66 128 89 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 90 176 11 110
+run 1
+run 1
+midi 62 176 64 124
+run 1
+run 1
+run 1
+run 1
+midi 46 144 58 55
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 92 176 11 2
+run 1
+run 1
+run 1
+run 1
+midi 74 176 5 115
+run 1
+run 1
+midi 105 144 32 79
+run 1
+run 1
+run 1
+run 1
+midi 70 176 1 11
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 123 67
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 76 144 20 4
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 91 176 7 24
+run 1
+midi 86 144 32 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 85 144 50 13
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 33 144 57 111
+run 1
+midi 52 144 58 33
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 7 144 20 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1 144 11 113
+run 1
+run 1
+run 1
+midi 24 144 36 82
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 101 176 13 24
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 6 144 93 115
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 51 144 84 90
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 115 144 32 30
+run 1
+run 1
+run 1
+midi 101 176 64 57
+run 1
+run 1
+run 1
+run 1
+midi 80 144 87 84
+run 1
+run 1
+run 1
+midi 87 128 58 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 77 224 45 20
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 105 128 32 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 109 48
+midi 26 224 30 54
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 127 71
+run 1
+midi 97 128 93 0
+run 1
+run 1
+midi 36 128 87 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 78 128 84 0
+run 1
+run 1
+run 1
+midi 81 176 1 97
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 51 144 43 30
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 74 224 23 7
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 35 176 12 99
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 110 144 74 76
+run 1
+midi 85 144 36 0
+run 1
+run 1
+midi 27 144 81 34
+run 1
+run 1
+run 1
+midi 0 224 6 95
+midi 0 224 5 118
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 125 224 85 51
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 63 144 50 0
+run 1
+run 1
+run 1
+run 1
+midi 112 128 43 0
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 51 128 57 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 89 144 11 0
+run 1
+run 1
+midi 50 144 74 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 45 128 81 0
+run 1
+run 1
+midi 78 144 77 77
+run 1
+run 1
+midi 66 128 77 0
+run 1
+run 1
+midi 25 176 5 67
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 98 176 64 63
+run 1
+run 1
+midi 66 144 22 94
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 84 144 22 0
+run 1
+run 1
+run 1
+midi 104 176 13 10
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 92 144 46 53
+run 1
+midi 84 144 79 90
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+param 11 0.8610
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 37 144 76 103
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 9 144 85 47
+run 1
+midi 96 176 64 111
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 50 109
+midi 109 224 120 97
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 37 35
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+param 2 0.6756
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 113 144 26 21
+run 1
+run 1
+midi 12 224 34 86
+run 1
+midi 76 176 7 103
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 76 144 36 126
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 81 144 76 0
+run 1
+midi 58 144 46 61
+run 1
+midi 97 144 78 19
+run 1
+midi 114 128 26 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 76 144 85 0
+run 1
+midi 0 224 11 114
+run 1
+run 1
+midi 8 144 16 18
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 48 176 13 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 35 144 16 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 87 224 126 19
+run 1
+run 1
+run 1
+midi 0 224 11 9
+midi 44 224 20 76
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+param 0 0.9497
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 15 144 18 102
+run 1
+midi 51 224 61 44
+run 1
+run 1
+run 1
+run 1
+run 1
+param 10 0.0139
+run 1
+run 1
+midi 126 128 79 0
+run 1
+midi 104 176 1 65
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 112 224 47 72
+run 1
+run 1
+run 1
+midi 93 224 94 103
+run 1
+run 1
+midi 76 144 10 41
+run 1
+run 1
+run 1
+run 1
+midi 27 224 92 116
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 76 144 84 113
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 126 224 75 116
+run 1
+run 1
+run 1
+midi 6 144 49 122
+run 1
+midi 18 176 11 5
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 41 224 62 84
+run 1
+run 1
+midi 49 128 36 0
+run 1
+run 1
+midi 30 144 49 0
+run 1
+run 1
+run 1
+run 1
+midi 13 144 87 117
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 9 128 78 0
+run 1
+run 1
+midi 116 128 18 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 57 144 58 59
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 30 144 94 21
+run 1
+midi 0 224 6 8
+midi 0 224 24 105
+run 1
+run 1
+run 1
+midi 56 144 81 122
+run 1
+midi 71 144 81 0
+run 1
+run 1
+midi 93 144 94 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+program 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 20 176 74 12
+run 1
+run 1
+run 1
+midi 4 176 64 119
+run 1
+run 1
+run 1
+run 1
+midi 64 144 74 51
+run 1
+run 1
+run 1
+run 1
+midi 68 176 11 112
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 21 128 87 0
+run 1
+run 1
+run 1
+midi 47 176 13 79
+run 1
+run 1
+run 1
+midi 74 144 10 0
+run 1
+midi 116 128 46 0
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 65 144 65 68
+run 1
+run 1
+run 1
+run 1
+midi 28 144 22 83
+run 1
+run 1
+run 1
+midi 24 128 58 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 17 88
+run 1
+run 1
+run 1
+midi 97 176 1 108
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 53 103
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 8 144 74 0
+run 1
+midi 59 176 13 6
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 62 128 84 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 50 144 36 49
+run 1
+run 1
+run 1
+midi 57 224 119 121
+run 1
+run 1
+run 1
+run 1
+midi 17 128 22 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 79 224 30 43
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 104 144 65 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 10 144 36 0
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 26 176 13 93
+run 1
+run 1
+run 1
+run 1
+midi 78 224 124 98
+run 1
+run 1
+midi 109 144 65 91
+run 1
+run 1
+midi 79 144 32 100
+run 1
+midi 18 128 32 0
+run 1
+run 1
+run 1
+run 1
+midi 88 144 77 10
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 121 144 77 0
+run 1
+run 1
+run 1
+midi 105 144 76 95
+run 1
+midi 33 144 49 50
+run 1
+midi 0 224 110 53
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+param 1 0.7006
+run 1
+midi 32 144 49 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 96 144 65 0
+run 1
+midi 96 144 10 47
+run 1
+param 1 0.3897
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 3 128 76 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 33 128 10 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 103 176 74 106
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 82 176 11 102
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 124 144 69 20
+run 1
+midi 111 176 74 3
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 65 144 69 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 64 224 94 90
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 5 144 86 93
+run 1
+run 1
+run 1
+run 1
+midi 112 176 1 109
+run 1
+midi 125 144 71 108
+run 1
+midi 24 144 19 107
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 2 144 71 0
+run 1
+run 1
+run 1
+run 1
+midi 110 176 1 114
+run 1
+run 1
+run 1
+midi 71 144 19 0
+run 1
+midi 47 144 79 47
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 116 144 86 0
+run 1
+midi 0 224 13 73
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 63 144 52 62
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 32 176 13 56
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 43 144 34 13
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 82 144 79 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 23 121
+run 1
+midi 0 224 70 18
+midi 30 224 111 24
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 11 176 13 66
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 42 144 36 6
+run 1
+run 1
+midi 108 144 44 53
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 11 176 7 73
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 45 224 118 7
+run 1
+run 1
+run 1
+midi 17 144 78 111
+run 1
+run 1
+run 1
+midi 76 176 13 42
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 98 144 71 8
+run 1
+midi 113 144 20 5
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 144 36 0
+run 1
+run 1
+run 1
+midi 7 224 14 33
+run 1
+param 3 0.5147
+run 1
+run 1
+param 3 0.9772
+run 1
+run 1
+midi 0 224 22 23
+run 1
+run 1
+midi 44 144 71 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 67 176 64 118
+run 1
+run 1
+run 1
+midi 10 128 34 0
+run 1
+midi 83 144 15 85
+run 1
+run 1
+run 1
+run 1
+midi 120 144 78 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 42 144 39 66
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 113 144 52 0
+run 1
+run 1
+run 1
+param 11 0.4877
+run 1
+run 1
+run 1
+param 3 0.5608
+run 1
+midi 7 144 78 86
+run 1
+run 1
+run 1
+run 1
+midi 27 176 64 63
+run 1
+run 1
+run 1
+run 1
+midi 38 144 32 101
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 59 224 108 34
+run 1
+run 1
+midi 123 144 90 65
+run 1
+run 1
+run 1
+run 1
+midi 95 144 57 61
+run 1
+run 1
+run 1
+run 1
+midi 26 144 59 58
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 34 176 64 5
+run 1
+run 1
+run 1
+midi 106 144 44 0
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 128 57 0
+run 1
+run 1
+run 1
+midi 49 128 78 0
+run 1
+run 1
+run 1
+run 1
+midi 111 128 90 0
+run 1
+run 1
+midi 90 176 12 33
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 72 113
+midi 11 224 62 93
+run 1
+run 1
+run 1
+midi 111 144 72 8
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 30 106
+midi 0 224 108 0
+run 1
+run 1
+run 1
+midi 86 176 13 89
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+setsr 44100
+resume
+run 1
+midi 11 128 72 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 22 224 102 72
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 79 128 59 0
+run 1
+run 1
+run 1
+run 1
+midi 83 144 32 0
+run 1
+midi 52 176 11 53
+run 1
+run 1
+run 1
+midi 119 144 51 111
+run 1
+run 1
+run 1
+midi 86 144 82 55
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 110 144 15 0
+run 1
+run 1
+run 1
+midi 31 176 1 104
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 83 144 14 13
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 75 144 83 70
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 108 144 82 0
+run 1
+run 1
+midi 79 176 1 80
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 25 144 12 14
+run 1
+midi 0 224 37 33
+midi 51 224 88 33
+run 1
+midi 101 144 57 5
+run 1
+midi 26 176 7 85
+run 1
+run 1
+run 1
+run 1
+midi 74 176 7 115
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 122 144 43 46
+run 1
+run 1
+run 1
+param 1 0.1060
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 55 144 65 88
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 69 144 57 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 40 224 116 45
+run 1
+midi 23 144 28 95
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 52 144 79 41
+run 1
+run 1
+run 1
+midi 33 144 38 30
+run 1
+run 1
+run 1
+run 1
+midi 12 176 12 33
+run 1
+run 1
+run 1
+run 1
+midi 104 144 38 19
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 127 144 61 124
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 84 144 85 70
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 106 176 64 50
+run 1
+run 1
+run 1
+midi 28 144 36 53
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 42 128 79 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 121 144 44 35
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 4 224 102 30
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+param 11 0.5623
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1 176 5 99
+run 1
+run 1
+run 1
+midi 65 176 64 17
+run 1
+run 1
+midi 7 144 36 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 113 144 39 0
+run 1
+run 1
+midi 116 128 28 0
+run 1
+run 1
+run 1
+run 1
+midi 24 144 84 8
+run 1
+run 1
+run 1
+midi 3 176 74 23
+run 1
+run 1
+run 1
+midi 26 144 79 94
+run 1
+midi 3 144 25 30
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 7 224 36 86
+run 1
+midi 122 144 52 31
+run 1
+run 1
+run 1
+run 1
+midi 10 176 1 48
+run 1
+run 1
+midi 111 128 20 0
+run 1
+run 1
+midi 0 224 81 60
+midi 65 224 103 116
+run 1
+midi 23 128 65 0
+run 1
+midi 5 144 34 19
+run 1
+run 1
+midi 23 176 1 91
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 17 176 74 33
+run 1
+run 1
+run 1
+run 1
+midi 93 144 93 87
+run 1
+midi 84 144 83 82
+run 1
+param 2 0.9293
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 113 144 31 113
+run 1
+midi 15 176 5 75
+run 1
+midi 77 144 17 114
+run 1
+midi 52 144 50 116
+run 1
+midi 2 144 14 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 73 224 37 69
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 17 144 87 84
+run 1
+run 1
+midi 105 144 35 100
+run 1
+midi 72 176 1 39
+run 1
+run 1
+midi 110 144 50 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 125 176 1 47
+run 1
+run 1
+midi 54 144 79 21
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 77 224 50 6
+run 1
+run 1
+run 1
+run 1
+midi 118 176 5 27
+run 1
+run 1
+run 1
+midi 61 176 1 62
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 9 176 7 20
+run 1
+run 1
+run 1
+run 1
+run 1
+param 9 0.0631
+run 1
+run 1
+midi 80 176 13 47
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 113 144 87 0
+run 1
+run 1
+param 2 0.7513
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 47 144 66 109
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 5 128 93 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 83 144 54 8
+run 1
+run 1
+param 11 0.7261
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 13 23
+midi 29 224 79 78
+run 1
+run 1
+run 1
+midi 17 144 51 96
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+param 0 0.3756
+run 1
+run 1
+run 1
+run 1
+midi 10 176 13 121
+run 1
+run 1
+run 1
+run 1
+midi 114 144 40 82
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 50 176 1 2
+run 1
+run 1
+run 1
+midi 39 128 51 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 55 176 74 89
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 18 144 55 107
+run 1
+run 1
+midi 23 144 68 89
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 87 224 86 69
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 60 144 12 35
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 16 176 12 57
+run 1
+run 1
+run 1
+run 1
+run 1
+param 11 0.6135
+run 1
+midi 53 144 48 120
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+param 0 0.9473
+run 1
+run 1
+midi 100 128 38 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 64 144 55 0
+run 1
+run 1
+midi 79 176 11 17
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 34 224 73 57
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 74 144 83 0
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 19 144 39 1
+run 1
+run 1
+run 1
+midi 55 128 66 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 48 144 15 20
+run 1
+midi 83 144 43 0
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 9 144 39 0
+run 1
+param 10 0.3564
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 97 144 35 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 62 144 15 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 104 144 22 40
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 58 42
+run 1
+run 1
+run 1
+run 1
+midi 30 176 1 123
+run 1
+run 1
+midi 18 128 31 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 13 128 25 0
+run 1
+midi 87 144 34 0
+run 1
+run 1
+run 1
+midi 0 224 47 32
+midi 0 224 18 118
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 81 128 22 0
+run 1
+run 1
+run 1
+run 1
+midi 38 144 10 82
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 58 144 49 88
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 122 144 92 47
+run 1
+run 1
+run 1
+midi 33 144 60 42
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 27 144 77 35
+run 1
+run 1
+run 1
+run 1
+midi 101 144 75 46
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 56 127
+midi 57 224 93 87
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 88 65
+run 1
+midi 80 144 79 0
+run 1
+param 0 0.7668
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 115 144 83 107
+run 1
+run 1
+run 1
+resume
+run 1
+run 1
+run 1
+run 1
+midi 91 176 7 12
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 121 12
+midi 0 224 75 37
+run 1
+run 1
+param 3 0.4331
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 103 128 83 0
+run 1
+run 1
+midi 38 144 67 88
+run 1
+run 1
+midi 8 128 61 0
+run 1
+run 1
+run 1
+run 1
+midi 0 224 81 80
+midi 10 224 38 3
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+param 11 0.0788
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 96 144 67 45
+run 1
+midi 78 144 69 85
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 47 144 61 70
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 62 128 48 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 116 144 64 123
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 71 176 12 63
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 109 128 68 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 84 176 5 92
+run 1
+run 1
+midi 123 144 40 122
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 54 176 13 127
+run 1
+run 1
+midi 7 144 48 104
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+param 11 0.5893
+run 1
+run 1
+run 1
+run 1
+midi 117 144 89 13
+run 1
+run 1
+midi 0 224 61 72
+midi 93 224 49 112
+run 1
+run 1
+midi 58 144 63 95
+run 1
+midi 87 144 61 64
+run 1
+run 1
+midi 93 176 5 9
+run 1
+run 1
+run 1
+run 1
+run 1
+program 2
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 40 144 67 0
+run 1
+run 1
+run 1
+run 1
+midi 92 144 17 0
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 110 144 64 0
+run 1
+run 1
+midi 98 144 84 61
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 26 128 69 0
+run 1
+run 1
+run 1
+run 1
+midi 0 224 4 54
+midi 18 224 61 75
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 113 144 59 28
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 66 144 63 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+program 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 69 224 120 24
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 21 26
+run 1
+run 1
+run 1
+run 1
+midi 87 144 12 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 86 144 92 77
+run 1
+run 1
+run 1
+run 1
+param 0 0.6644
+run 1
+run 1
+midi 0 224 57 69
+midi 87 224 17 6
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 80 144 40 81
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 63 144 82 112
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 9 176 11 16
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 42 176 11 121
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 19 224 5 38
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 76 17
+midi 0 224 45 119
+run 1
+midi 112 128 84 0
+run 1
+run 1
+run 1
+run 1
+midi 13 176 64 94
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 113 144 86 48
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+program 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 55 111
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 115 224 13 14
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 115 144 21 47
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 7 144 75 0
+run 1
+midi 110 128 54 0
+run 1
+run 1
+midi 0 224 77 71
+midi 103 224 64 17
+run 1
+run 1
+run 1
+run 1
+midi 41 224 117 89
+run 1
+run 1
+run 1
+midi 10 144 46 47
+run 1
+run 1
+run 1
+midi 33 176 7 8
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 55 144 54 127
+run 1
+midi 0 224 79 42
+midi 0 224 116 30
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 25 144 28 37
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 67 128 61 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 52 144 28 0
+run 1
+run 1
+param 0 0.0744
+run 1
+run 1
+run 1
+midi 92 128 44 0
+run 1
+midi 0 224 1 35
+midi 3 224 85 68
+run 1
+run 1
+run 1
+midi 104 128 59 0
+run 1
+run 1
+midi 125 144 86 127
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 84 144 60 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 35 144 61 77
+run 1
+run 1
+midi 28 144 18 102
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 27 144 57 101
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 68 176 5 6
+run 1
+midi 47 144 10 0
+run 1
+run 1
+midi 107 176 13 124
+run 1
+run 1
+run 1
+midi 14 128 54 0
+run 1
+run 1
+run 1
+midi 36 144 17 53
+run 1
+run 1
+run 1
+midi 81 144 33 56
+run 1
+param 3 0.1909
+run 1
+run 1
+run 1
+run 1
+midi 46 176 64 2
+run 1
+midi 96 144 33 7
+run 1
+midi 82 144 18 0
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 28 128 33 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+param 11 0.2374
+run 1
+midi 0 224 47 11
+midi 72 224 54 99
+run 1
+run 1
+run 1
+midi 52 144 15 85
+run 1
+run 1
+run 1
+midi 90 128 77 0
+run 1
+run 1
+run 1
+midi 8 144 86 0
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 80 144 70 32
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 99 128 46 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 73 144 24 74
+run 1
+run 1
+midi 0 144 47 26
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 29 144 77 96
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 53 144 32 41
+run 1
+run 1
+run 1
+run 1
+run 1
+program 2
+run 1
+run 1
+run 1
+run 1
+midi 54 144 15 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 110 176 7 8
+run 1
+run 1
+run 1
+midi 85 176 64 109
+run 1
+run 1
+midi 50 144 29 100
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 36 144 92 0
+run 1
+run 1
+run 1
+run 1
+run 1
+program 0
+run 1
+midi 33 176 12 6
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 21 128 77 0
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 97 144 21 0
+run 1
+run 1
+run 1
+midi 91 144 25 109
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 26 144 47 0
+run 1
+run 1
+run 1
+run 1
+run 1
+param 11 0.8525
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 29 144 24 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 63 224 44 66
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+param 0 0.0825
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 86 144 68 49
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 55 176 11 32
+run 1
+run 1
+midi 110 176 1 66
+run 1
+midi 123 176 7 9
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 122 224 123 113
+run 1
+midi 12 176 1 25
+run 1
+run 1
+run 1
+run 1
+midi 120 176 64 88
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 91 176 12 118
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 92 72
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 60 144 61 0
+run 1
+run 1
+run 1
+midi 52 144 93 59
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 49 128 70 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1

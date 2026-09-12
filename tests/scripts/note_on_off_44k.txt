@@ -1,0 +1,7 @@
+sr 44100
+block 512
+open
+midi 0 144 60 100
+run 100
+midi 0 128 60 0
+run 50

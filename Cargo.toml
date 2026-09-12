@@ -1,0 +1,78 @@
+[package]
+name = "deja_lama"
+version = "1.0.0"
+edition = "2024"
+rust-version = "1.95"
+description = "Unofficial one-to-one re-creation of AudioNerdz' Delay Lama (2002), the virtual singing monk, as a CLAP/VST3 instrument"
+authors = ["Dalton Caron <dpcaron99@gmail.com>"]
+repository = "https://github.com/dolphindalt/DejaLama"
+license = "MIT"
+readme = "README.md"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+# The standalone binary links ALSA/JACK (cpal); keep it opt-in so the plugin and its tests
+# build without native audio libraries: `cargo run --release --features standalone`.
+[[bin]]
+name = "deja_lama"
+path = "src/main.rs"
+required-features = ["standalone"]
+
+[features]
+default = []
+standalone = ["nice-plug/standalone"]
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+# Keep these two off for good: they rewrite float expressions (mul_add, powi, exp2), and every
+# rewrite changes the rounding and breaks the bit-exactness of the engine against the DLL.
+suboptimal_flops = "allow"
+imprecise_flops = "allow"
+
+[dependencies]
+egui = { version = "0.36", default-features = false }
+nice-plug = "0.4.1"
+nice-plug-egui = { version = "0.5.0", features = ["opengl"] }
+png = "0.18.1"
+
+# The preset writer serialises nice-plug's state format.
+[dev-dependencies]
+serde_json = "1"
+
+[[example]]
+name = "write_presets"
+test = true
+
+# Optimise the dev profile a little.
+[profile.dev]
+opt-level = 1
+
+# Optimise the release profile fully at the cost of compile time.
+[profile.release]
+codegen-units = 1
+lto = "thin"
+# Strip symbols to shrink the bundles.
+strip = "symbols"
+
+[profile.profiling]
+inherits = "release"
+debug = true
+strip = "none"
+
+# `cargo test --release` builds with this profile; thin LTO + `--test` overflows rustc 1.95's
+# stack (nixpkgs), so keep the test build plain. The plugin itself still uses `release`.
+[profile.bench]
+inherits = "release"
+lto = false
+codegen-units = 16
+strip = "none"
+
+[build-dependencies]
+png = "0.18.1"
+sha2 = "0.11.0"
+zip = { version = "8.6.0", default-features = false, features = ["deflate-flate2-zlib-rs"] }

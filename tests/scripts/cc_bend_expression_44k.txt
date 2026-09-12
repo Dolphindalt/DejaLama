@@ -1,0 +1,21 @@
+sr 44100
+block 512
+open
+midi 0 144 67 100
+run 20
+midi 100 224 0 127
+run 30
+midi 7 176 1 100
+midi 300 224 0 0
+run 30
+midi 0 176 7 127
+midi 5 176 11 127
+run 40
+midi 50 176 12 30
+midi 51 176 13 127
+midi 52 176 5 0
+run 40
+midi 0 176 11 0
+run 40
+midi 3 128 67 0
+run 30

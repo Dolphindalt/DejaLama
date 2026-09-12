@@ -1,0 +1,2 @@
+*.vstpreset binary
+tests/scripts/*.txt linguist-generated

@@ -1,0 +1,1256 @@
+sr 192000
+block 2048
+open
+run 1
+midi 0 224 115 9
+midi 1335 144 126 49
+midi 1647 128 126 0
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 826 144 32 56
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 252 224 22 127
+midi 414 144 40 3
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 124 95
+midi 1272 144 48 25
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 11 87
+run 1
+run 1
+run 1
+run 1
+midi 1582 144 115 93
+run 1
+run 1
+midi 1067 224 54 105
+run 1
+run 1
+run 1
+run 1
+midi 882 224 60 85
+midi 1269 144 73 42
+run 1
+run 1
+run 1
+midi 1508 144 56 44
+run 1
+run 1
+run 1
+midi 212 224 96 87
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 583 176 11 111
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 42 59
+midi 182 176 12 107
+run 1
+midi 0 224 65 97
+midi 1196 224 16 107
+run 1
+midi 600 144 85 104
+midi 982 144 32 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 600 128 56 0
+midi 1934 128 115 0
+run 1
+run 1
+run 1
+run 1
+run 1
+param 10 0.6325
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 108 124
+midi 1241 144 43 121
+midi 1605 144 12 66
+run 1
+run 1
+run 1
+run 1
+midi 1784 176 7 5
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 844 128 48 0
+run 1
+midi 0 224 58 97
+midi 397 144 85 79
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1543 176 12 40
+midi 2035 176 1 12
+run 1
+run 1
+run 1
+run 1
+run 1
+param 0 0.0772
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1977 176 120 66
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 413 144 43 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1127 144 71 9
+midi 1350 176 120 38
+run 1
+run 1
+program 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 549 144 6 86
+midi 1131 224 88 126
+midi 1703 144 6 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 94 18
+midi 764 128 71 0
+midi 1679 176 12 71
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 425 144 25 112
+midi 1157 224 38 94
+param 3 0.0941
+run 1
+midi 992 144 37 109
+midi 1323 144 120 70
+run 1
+run 1
+run 1
+run 1
+midi 210 144 104 80
+midi 1578 144 30 59
+run 1
+run 1
+midi 0 224 56 17
+midi 1095 128 73 0
+run 1
+run 1
+run 1
+run 1
+param 10 0.2533
+run 1
+run 1
+run 1
+midi 1606 144 12 0
+midi 1705 144 96 3
+run 1
+run 1
+run 1
+midi 681 144 101 105
+midi 1461 176 7 79
+midi 1911 144 90 27
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 123 110
+midi 23 128 90 0
+midi 1699 144 15 40
+run 1
+run 1
+midi 91 128 104 0
+midi 231 144 11 117
+midi 892 176 1 119
+run 1
+program 2
+run 1
+run 1
+run 1
+midi 107 176 7 75
+midi 333 144 19 59
+midi 830 144 20 123
+run 1
+run 1
+run 1
+run 1
+midi 0 224 61 123
+midi 8 144 56 51
+run 1
+midi 1534 144 30 0
+run 1
+run 1
+run 1
+run 1
+midi 1363 224 58 34
+midi 1867 128 20 0
+midi 1893 144 11 26
+run 1
+midi 639 224 81 41
+midi 1926 144 10 65
+run 1
+run 1
+run 1
+midi 478 176 12 30
+midi 835 144 15 0
+midi 1706 144 125 91
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 863 144 1 67
+midi 1708 144 19 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1001 144 86 95
+midi 1093 144 11 0
+run 1
+run 1
+midi 0 224 1 45
+midi 1799 144 1 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1064 176 120 33
+run 1
+midi 0 224 120 64
+midi 41 144 86 0
+run 1
+midi 1305 128 85 0
+midi 1812 144 82 58
+run 1
+run 1
+run 1
+run 1
+midi 0 224 49 100
+midi 23 128 125 0
+midi 1294 144 82 0
+param 11 0.8378
+run 1
+run 1
+run 1
+run 1
+midi 632 176 5 43
+midi 1371 144 120 0
+run 1
+midi 1928 144 37 0
+run 1
+run 1
+midi 121 128 101 0
+midi 271 144 10 0
+midi 1277 144 57 93
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 49 85
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1141 144 96 0
+midi 1828 144 83 96
+run 1
+run 1
+run 1
+run 1
+midi 1307 128 57 0
+run 1
+midi 1029 144 56 0
+midi 1763 176 74 122
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 609 176 11 75
+midi 1334 224 85 113
+run 1
+midi 0 224 85 46
+midi 0 224 87 100
+midi 1943 224 53 19
+run 1
+midi 361 144 83 0
+midi 1008 144 56 15
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+param 11 0.4069
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 76 144 56 0
+midi 1655 128 25 0
+run 1
+midi 723 128 40 0
+run 1
+run 1
+midi 126 176 120 16
+midi 647 144 97 22
+midi 735 176 7 26
+run 1
+run 1
+run 1
+run 1
+midi 0 224 72 55
+midi 1635 144 127 113
+midi 1860 144 51 63
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 180 144 17 106
+midi 248 176 64 46
+run 1
+run 1
+run 1
+run 1
+midi 1651 144 41 14
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1322 176 120 57
+midi 1575 144 41 0
+run 1
+midi 1837 144 17 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 18 1
+midi 705 176 64 79
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 109 176 64 113
+midi 219 144 21 62
+midi 1671 144 89 93
+run 1
+midi 430 128 127 0
+midi 975 176 64 123
+midi 1313 128 89 0
+run 1
+run 1
+midi 425 176 1 99
+midi 1857 128 21 0
+run 1
+run 1
+run 1
+run 1
+run 1
+param 3 0.5087
+run 1
+run 1
+run 1
+run 1
+midi 4 176 7 105
+midi 107 176 11 86
+midi 1941 144 66 70
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 818 176 11 56
+midi 1678 176 13 113
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 127 176 12 45
+midi 1088 144 98 10
+midi 1539 176 74 17
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 164 224 5 74
+midi 1261 224 2 116
+run 1
+run 1
+run 1
+midi 293 144 98 0
+midi 927 224 126 20
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1744 176 5 127
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+param 3 0.6013
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 157 144 32 25
+midi 1239 176 12 87
+midi 1813 224 72 3
+run 1
+run 1
+run 1
+run 1
+midi 101 224 68 66
+midi 969 176 11 44
+run 1
+run 1
+run 1
+setsr 176400
+resume
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 149 144 51 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 847 176 11 45
+midi 918 128 97 0
+midi 1574 176 64 75
+run 1
+run 1
+midi 138 128 66 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 0 37
+midi 0 224 38 59
+midi 1136 144 24 126
+run 1
+run 1
+run 1
+midi 1819 176 13 0
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1216 144 126 36
+run 1
+run 1
+run 1
+run 1
+midi 1544 176 1 35
+midi 1569 144 32 0
+midi 1818 128 126 0
+run 1
+run 1
+run 1
+run 1
+midi 1938 128 24 0
+run 1
+run 1
+param 3 0.6148
+run 1
+run 1
+midi 305 144 44 91
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+program 2
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1581 144 70 13
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 88 79
+midi 772 176 1 55
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1574 144 66 13
+midi 1690 144 11 9
+midi 1956 144 32 68
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 80 109
+midi 384 128 66 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 378 128 70 0
+midi 769 144 92 42
+midi 1975 128 32 0
+run 1
+run 1
+run 1
+midi 474 176 13 36
+midi 994 144 44 0
+midi 2003 144 92 0
+run 1
+midi 34 176 1 86
+midi 343 128 11 0
+run 1
+run 1
+midi 0 224 66 73
+midi 688 144 54 47
+run 1
+midi 493 144 54 0
+midi 1133 176 5 56
+midi 1979 144 115 123
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+param 2 0.0578
+run 1
+run 1
+run 1
+midi 1286 128 115 0
+midi 1919 224 54 4
+run 1
+midi 732 176 1 115
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 591 176 74 25
+midi 608 144 16 28
+midi 1285 144 54 110
+run 1
+midi 4 144 54 0
+midi 228 144 26 7
+midi 1232 144 99 13
+run 1
+run 1
+midi 0 224 42 118
+midi 786 144 48 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 130 144 98 44
+midi 1274 224 6 105
+run 1
+run 1
+run 1
+run 1
+run 1
+param 0 0.8404
+run 1
+run 1
+midi 531 176 13 110
+run 1
+run 1
+run 1
+midi 862 144 98 0
+midi 906 176 7 123
+run 1
+midi 513 144 125 55
+run 1
+run 1
+midi 1723 176 120 37
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 27 59
+midi 448 176 120 37
+midi 1610 144 28 89
+param 10 0.3831
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 705 144 78 58
+midi 1811 224 102 50
+midi 1848 176 120 34
+run 1
+run 1
+midi 0 224 43 21
+midi 0 224 32 33
+midi 1858 128 28 0
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 119 224 68 13
+run 1
+midi 1544 144 86 49
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 233 144 9 13
+run 1
+param 3 0.9760
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 22 176 120 77
+midi 359 144 78 0
+midi 1688 144 32 8
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1303 144 70 42
+midi 1733 144 69 45
+midi 1970 144 41 27
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 0 224 34 48
+midi 1346 176 5 7
+midi 1425 224 61 52
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 813 144 1 24
+run 1
+midi 1379 176 13 39
+run 1
+midi 391 128 32 0
+midi 674 144 39 22
+run 1
+run 1
+midi 0 224 11 94
+midi 1498 144 16 0
+run 1
+run 1
+run 1
+midi 0 224 7 79
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1241 144 115 81
+midi 1906 144 41 22
+run 1
+run 1
+run 1
+midi 671 128 86 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1332 144 34 65
+run 1
+midi 339 144 38 43
+midi 1015 144 52 67
+run 1
+run 1
+run 1
+midi 1256 128 70 0
+midi 1708 144 55 29
+run 1
+midi 14 144 82 35
+midi 841 224 7 78
+midi 1960 176 74 102
+run 1
+midi 570 224 29 59
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1182 128 82 0
+run 1
+param 3 0.1975
+run 1
+midi 1027 176 64 70
+run 1
+run 1
+run 1
+midi 621 224 44 60
+run 1
+midi 367 128 99 0
+midi 1132 144 38 2
+run 1
+run 1
+run 1
+midi 1081 144 16 121
+midi 1654 144 2 62
+run 1
+run 1
+run 1
+param 11 0.0863
+run 1
+run 1
+run 1
+run 1
+midi 462 176 11 62
+midi 958 144 52 121
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 220 176 1 13
+midi 1236 176 13 35
+run 1
+run 1
+run 1
+run 1
+midi 0 224 4 48
+midi 891 144 27 53
+midi 905 176 1 83
+run 1
+run 1
+run 1
+run 1
+midi 941 224 28 59
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1257 176 7 58
+midi 1556 128 55 0
+run 1
+run 1
+midi 1847 176 1 0
+run 1
+midi 1532 144 34 65
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1057 144 16 0
+run 1
+run 1
+run 1
+midi 777 144 113 3
+midi 1916 144 101 2
+run 1
+midi 288 176 12 103
+run 1
+midi 1490 176 120 16
+midi 1564 224 12 64
+midi 1810 144 46 4
+run 1
+run 1
+midi 1736 128 101 0
+midi 1846 176 1 106
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 592 144 4 79
+run 1
+run 1
+midi 134 144 115 0
+midi 1777 144 108 94
+run 1
+run 1
+param 9 0.9907
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 720 224 112 95
+midi 753 176 7 54
+midi 821 144 85 5
+run 1
+midi 1517 224 1 8
+run 1
+run 1
+run 1
+run 1
+midi 1620 128 34 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 585 144 1 0
+run 1
+run 1
+run 1
+midi 409 224 42 61
+run 1
+run 1
+run 1
+midi 349 144 41 50
+midi 606 144 27 88
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1142 176 1 41
+midi 1777 224 108 38
+midi 1874 144 96 39
+run 1
+run 1
+run 1
+run 1
+midi 468 144 124 4
+midi 1235 128 27 0
+midi 1473 176 5 101
+run 1
+run 1
+midi 1241 144 119 3
+midi 1337 128 26 0
+midi 1627 176 12 26
+run 1
+param 9 0.1869
+run 1
+run 1
+run 1
+midi 0 224 107 9
+midi 897 224 122 125
+run 1
+run 1
+midi 56 128 119 0
+midi 640 144 91 10
+midi 1721 144 52 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1895 144 4 0
+run 1
+run 1
+midi 1106 224 41 63
+run 1
+run 1
+run 1
+midi 7 144 95 8
+midi 651 144 96 112
+midi 1573 144 127 110
+run 1
+midi 594 176 74 80
+midi 1139 144 92 18
+midi 1625 144 82 20
+param 10 0.2262
+run 1
+run 1
+midi 0 224 116 25
+midi 1833 224 79 34
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 880 176 11 4
+run 1
+midi 817 144 83 93
+midi 943 176 74 103
+midi 1645 144 15 24
+run 1
+midi 351 128 82 0
+midi 471 176 64 20
+midi 1242 176 74 19
+run 1
+midi 1423 144 69 76
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 822 176 12 27
+midi 1293 128 9 0
+run 1
+run 1
+run 1
+midi 84 224 113 33
+midi 1102 176 13 45
+midi 1587 144 2 0
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+param 11 0.3684
+run 1
+run 1
+midi 1463 144 33 13
+run 1
+run 1
+run 1
+midi 585 144 1 1
+run 1
+run 1
+param 1 0.6513
+run 1
+run 1
+run 1
+run 1
+midi 193 176 12 44
+midi 1916 144 91 62
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+run 1
+midi 1193 176 13 81
+run 1
+run 1

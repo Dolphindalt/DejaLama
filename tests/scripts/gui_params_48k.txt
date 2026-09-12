@@ -1,0 +1,30 @@
+sr 48000
+block 256
+open
+param 11 0.5
+param 10 0.6
+run 40
+param 9 1.0
+run 40
+param 11 0.75
+run 40
+param 10 0.2
+run 40
+param 1 0.9
+run 30
+param 3 1.0
+run 30
+param 3 0.0
+param 2 0.2
+run 30
+param 0 0.0
+param 11 0.1
+run 60
+param 9 0.0
+run 40
+midi 0 144 40 100
+param 9 1.0
+param 9 0.0
+run 30
+midi 0 128 40 0
+run 30

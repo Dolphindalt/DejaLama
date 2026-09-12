@@ -1,0 +1,13 @@
+/target
+/result*
+.direnv/
+*.f32
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# The editor's bitmaps and the original package belong to the original plugin; build.rs
+# produces the bitmaps from the package, and none of them enter the repository.
+/assets/*
+!/assets/.gitkeep
