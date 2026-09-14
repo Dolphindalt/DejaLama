@@ -8,7 +8,7 @@ use sha2::{Digest, Sha256};
 use std::fmt::Write as _;
 use std::io::{Cursor, Read};
 use std::path::{Path, PathBuf};
-use std::process::Command;
+use std::process::{Command, Stdio};
 
 pub const PACKAGE_URL: &str = "https://archive.org/download/delay-lama-vst/Delay%20Lama.zip";
 pub const PACKAGE_NAME: &str = "Delay Lama.zip";
@@ -28,16 +28,6 @@ pub const BITMAPS: [(u32, &str, bool); 8] = [
     (153, "knob_voice", false),
     (160, "help", false),
 ];
-
-/// Indices into `BITMAPS` and into the arrays `read_bitmaps` returns.
-pub const BACKGROUND: usize = 0;
-pub const MONK_ATLAS: usize = 1;
-pub const TRI_VOWEL: usize = 2;
-pub const TRI_PITCH: usize = 3;
-pub const FADER_HANDLE: usize = 4;
-pub const KNOB_GLIDE: usize = 5;
-pub const KNOB_VOICE: usize = 6;
-pub const HELP: usize = 7;
 
 /// What to do when nothing worked.
 pub const HINT: &str = "Put `Delay Lama.dll` or `Delay Lama.zip` (https://archive.org/download/delay-lama-vst/Delay%20Lama.zip) into the folder, or point DEJA_LAMA_DLL at the DLL; delete a file that fails its hash check. The download needs `curl`.";
@@ -78,7 +68,20 @@ pub fn read_bitmaps(dir: &Path) -> Result<[Vec<u8>; 8], String> {
     for (_, name, _) in BITMAPS {
         files.push(read(&bitmap_path(dir, name))?);
     }
-    files.try_into().map_err(|_| "eight bitmaps".to_owned())
+    files
+        .try_into()
+        .map_err(|_| format!("{}: expected eight bitmaps", dir.display()))
+}
+
+/// Delete the eight PNG files of `dir`, so that `ensure_bitmaps` extracts them again.
+pub fn remove_bitmaps(dir: &Path) -> Result<(), String> {
+    for (_, name, _) in BITMAPS {
+        let path = bitmap_path(dir, name);
+        if path.exists() {
+            std::fs::remove_file(&path).map_err(|err| format!("{}: {err}", path.display()))?;
+        }
+    }
+    Ok(())
 }
 
 /// The folder the plugin keeps the bitmaps in: `DEJA_LAMA_ASSETS`, or the user's data
@@ -89,7 +92,7 @@ pub fn data_dir() -> Option<PathBuf> {
         var("DEJA_LAMA_ASSETS"),
         var("HOME"),
         var("XDG_DATA_HOME"),
-        var("APPDATA"),
+        var("LOCALAPPDATA"),
     )
 }
 
@@ -98,13 +101,13 @@ fn data_dir_from(
     assets: Option<PathBuf>,
     home: Option<PathBuf>,
     xdg_data_home: Option<PathBuf>,
-    appdata: Option<PathBuf>,
+    local_appdata: Option<PathBuf>,
 ) -> Option<PathBuf> {
     if assets.is_some() {
         return assets;
     }
     if cfg!(target_os = "windows") {
-        appdata.map(|dir| dir.join("Deja Lama"))
+        local_appdata.map(|dir| dir.join("Deja Lama"))
     } else if cfg!(target_os = "macos") {
         home.map(|home| home.join("Library/Application Support/Deja Lama"))
     } else {
@@ -124,11 +127,13 @@ fn obtain_dll(dir: &Path) -> Result<Vec<u8>, String> {
         return Ok(bytes);
     }
     let package = dir.join(PACKAGE_NAME);
-    if !package.exists() {
-        download(&package)?;
-    }
-    let zip = read(&package)?;
-    check_hash(&package, &zip, PACKAGE_SHA256)?;
+    let zip = if package.exists() {
+        let zip = read(&package)?;
+        check_hash(&package, &zip, PACKAGE_SHA256)?;
+        zip
+    } else {
+        download(&package)?
+    };
     let bytes = extract(&package, &zip)?;
     check_hash(&package, &bytes, DLL_SHA256)?;
     Ok(bytes)
@@ -138,28 +143,66 @@ fn read(path: &Path) -> Result<Vec<u8>, String> {
     std::fs::read(path).map_err(|err| format!("{}: {err}", path.display()))
 }
 
-fn download(package: &Path) -> Result<(), String> {
+/// A private name next to `path` for a file under construction, so that another instance
+/// never sees a partial file at the final name.
+fn partial(path: &Path) -> PathBuf {
+    let mut name = path.as_os_str().to_owned();
+    name.push(format!(".part-{}", std::process::id()));
+    PathBuf::from(name)
+}
+
+/// Move a finished file to its final name.
+fn finish(part: &Path, path: &Path) -> Result<(), String> {
+    std::fs::rename(part, path).map_err(|err| format!("{}: {err}", path.display()))
+}
+
+/// Download the package into a partial file, keep it only when its hash matches, and return
+/// its bytes.
+fn download(package: &Path) -> Result<Vec<u8>, String> {
+    let part = partial(package);
     let mut curl = Command::new("curl");
     curl.args([
         "--location",
         "--fail",
         "--silent",
         "--show-error",
+        "--connect-timeout",
+        "30",
+        "--max-time",
+        "300",
+        "--retry",
+        "2",
         "--output",
     ])
-    .arg(package)
-    .arg(PACKAGE_URL);
+    .arg(&part)
+    .arg(PACKAGE_URL)
+    .stdin(Stdio::null())
+    .stdout(Stdio::null())
+    .stderr(Stdio::piped());
     #[cfg(target_os = "windows")]
     {
         use std::os::windows::process::CommandExt as _;
         curl.creation_flags(0x0800_0000); // CREATE_NO_WINDOW
     }
-    let status = curl.status().map_err(|err| format!("curl: {err}"))?;
-    if status.success() {
-        Ok(())
+    let output = curl.output().map_err(|err| format!("curl: {err}"))?;
+    let result = if output.status.success() {
+        read(&part).and_then(|zip| check_hash(&part, &zip, PACKAGE_SHA256).map(|()| zip))
     } else {
-        let _ = std::fs::remove_file(package);
-        Err(format!("curl failed to download {PACKAGE_URL} ({status})"))
+        let stderr = String::from_utf8_lossy(&output.stderr);
+        Err(format!(
+            "curl failed to download {PACKAGE_URL}: {}",
+            stderr.trim()
+        ))
+    };
+    match result {
+        Ok(zip) => {
+            finish(&part, package)?;
+            Ok(zip)
+        }
+        Err(message) => {
+            let _ = std::fs::remove_file(&part);
+            Err(message)
+        }
     }
 }
 
@@ -307,17 +350,28 @@ fn decode_dib(dib: &[u8], key_white: bool) -> Result<(u32, u32, Vec<u8>), String
     Ok((width, height, rgba))
 }
 
+/// Write a PNG through a partial file, so that the final name only ever holds a whole file.
 fn write_png(path: &Path, width: u32, height: u32, rgba: &[u8]) -> Result<(), String> {
+    let part = partial(path);
     let describe = |err: &dyn std::fmt::Display| format!("{}: {err}", path.display());
-    let file = std::fs::File::create(path).map_err(|err| describe(&err))?;
-    let mut encoder = png::Encoder::new(std::io::BufWriter::new(file), width, height);
-    encoder.set_color(png::ColorType::Rgba);
-    encoder.set_depth(png::BitDepth::Eight);
-    let mut writer = encoder.write_header().map_err(|err| describe(&err))?;
-    writer
-        .write_image_data(rgba)
-        .map_err(|err| describe(&err))?;
-    writer.finish().map_err(|err| describe(&err))
+    let result = (|| {
+        let file = std::fs::File::create(&part).map_err(|err| describe(&err))?;
+        let mut encoder = png::Encoder::new(std::io::BufWriter::new(file), width, height);
+        encoder.set_color(png::ColorType::Rgba);
+        encoder.set_depth(png::BitDepth::Eight);
+        let mut writer = encoder.write_header().map_err(|err| describe(&err))?;
+        writer
+            .write_image_data(rgba)
+            .map_err(|err| describe(&err))?;
+        writer.finish().map_err(|err| describe(&err))
+    })();
+    match result {
+        Ok(()) => finish(&part, path),
+        Err(message) => {
+            let _ = std::fs::remove_file(&part);
+            Err(message)
+        }
+    }
 }
 
 #[cfg(test)]

@@ -18,7 +18,7 @@ Deja Lama re-creates AudioNerdz' Delay Lama (2002), the VST2 "virtual singing mo
 | `src/original.rs` | Obtains the DLL's eight bitmaps (white pixels in the three handle images carry alpha 0): finds or downloads the original package, checks both hashes, extracts the resources, writes PNG files. Its module doc lists the sources. |
 | `build.rs`, `assets/` | With `--features embed-assets`, runs `original` at build time into `assets/*.png` for `include_bytes!`. Without it (the default and the distributed build) the editor runs `original` on a thread at first open into the user's data folder and shows a status page until the bitmaps are there. |
 | `examples/render_script.rs` | Render a script: print its frame count and FNV-1a hash, or write the interleaved f32 output. |
-| `examples/write_presets.rs`, `presets/` | The five factory programs as VST3 preset files, generated from `engine::PROGRAMS`. Regenerate them when the parameter ids, the programs or `VST3_CLASS_ID` change. |
+| `examples/write_presets.rs`, `presets/` | The five factory programs as VST3 preset files, generated from `engine::PROGRAMS`. Regenerate them when the parameter ids, the programs, `VST3_CLASS_ID` or the crate version change (the state carries the version). |
 | `tests/engine_regression.rs`, `tests/scripts/` | Hash tests: each script replays through the engine and its output must hash like the DLL's. Unit tests sit next to the code in `src/`. |
 
 ## Build, run, test
@@ -37,7 +37,7 @@ cargo clippy --all-targets ; cargo fmt
 - `Cargo.toml` explains its lint allowances, the `standalone` gate and the `bench` profile; keep all three as they are.
 - `nix develop` provides the toolchain, `cargo-nice-plug`, `curl` and the GL, X11, ALSA and JACK libraries. Keep the nix toolchain and a system toolchain in separate target directories (`CARGO_TARGET_DIR`); mixing them in one `target/` breaks with glibc symbol errors, and `cargo clean` fixes it.
 - CI (`.github/workflows/ci.yml`) runs on Linux and macOS inside `nix develop` and on Windows with rustup: fmt, clippy with `-D warnings` and the tests for both variants, a standalone check and the bundle. It fetches the original package into `assets/` first and caches it, the Nix store and the cargo registry between runs, and it fails when `assets/` tracks anything beyond `.gitkeep`. Keep every step green.
-- The release workflow (`.github/workflows/release.yml`, run by hand) builds the default variant on the three platforms (macOS universal through rustup, because nixpkgs' rustc lacks the second Apple target), checks that no bundle embeds the bitmaps, and publishes the archives as a GitHub release tagged with the version in `Cargo.toml`; it refuses a tag that exists, so bump the version first.
+- The release workflow (`.github/workflows/release.yml`, run by hand) builds the default variant with rustup on the three platforms (Linux on `ubuntu-22.04` for a glibc floor of 2.35, macOS universal; Nix would link nixpkgs' glibc and lacks the second Apple target), checks that no bundle embeds the bitmaps, and publishes the archives with `THIRD-PARTY-LICENSES.md` (the embedded fonts' licences) as a GitHub release tagged with the version in `Cargo.toml` at the built commit; it refuses a tag that exists, so bump the version first.
 
 ## Invariants
 

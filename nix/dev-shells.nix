@@ -40,7 +40,7 @@ flakeInputs.nixpkgs.lib.genAttrs
           curl # the plugin and build.rs download the original package for the editor's bitmaps
         ];
         buildInputs = runtimeLibs;
-        LD_LIBRARY_PATH = pkgs.lib.optionalString pkgs.stdenv.isLinux (pkgs.lib.makeLibraryPath runtimeLibs);
+        LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath runtimeLibs;
       };
     }
   )

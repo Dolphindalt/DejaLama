@@ -52,7 +52,7 @@ jobs:
           key: delay-lama-${{ env.PACKAGE_SHA256 }}
       - name: Fetch the original package
         run: |
-          test -f "assets/Delay Lama.zip" || nix develop --command curl --location --fail --silent --show-error \
+          test -f "assets/Delay Lama.zip" || curl --location --fail --silent --show-error \
             --output "assets/Delay Lama.zip" "$PACKAGE_URL"
           echo "$PACKAGE_SHA256  assets/Delay Lama.zip" | shasum -a 256 --check
 

@@ -18,7 +18,7 @@ Get the archive for your platform from the [releases page](https://github.com/do
    cargo nice-plug bundle deja_lama --release
    ```
 
-   The first build compiles the dependencies (a few minutes). The bundle carries none of the original's bitmaps: the first time you open the editor, the plugin fetches the original Delay Lama package (1.3 MB) from the Internet Archive with `curl` and keeps the bitmaps in your data folder (`~/.local/share/deja-lama` on Linux, `~/Library/Application Support/Deja Lama` on macOS, `%APPDATA%\Deja Lama` on Windows). Without network access, put `Delay Lama.zip` or `Delay Lama.dll` into that folder yourself, or set `DEJA_LAMA_DLL` to the DLL's path; `DEJA_LAMA_ASSETS` moves the folder. To bake the bitmaps into the bundle instead, add `--features embed-assets`: the build then fetches the package into `assets/` the same way.
+   The first build compiles the dependencies (a few minutes). The bundle carries none of the original's bitmaps: the first time you open the editor, the plugin fetches the original Delay Lama package (1.3 MB) from the Internet Archive with `curl` (every platform ships it) and keeps the bitmaps in your data folder (`~/.local/share/deja-lama` on Linux, or `$XDG_DATA_HOME/deja-lama` when that is set; `~/Library/Application Support/Deja Lama` on macOS; `%LOCALAPPDATA%\Deja Lama` on Windows). Without network access, put `Delay Lama.zip` or `Delay Lama.dll` into that folder yourself, or set `DEJA_LAMA_DLL` to the DLL's path; `DEJA_LAMA_ASSETS` moves the folder. To bake the bitmaps into the bundle instead, add `--features embed-assets`: the build then fetches the package into `assets/` the same way.
 
 6. Copy the bundles from `target/bundled/` into your plugin folders. On Linux:
 
@@ -32,7 +32,7 @@ Get the archive for your platform from the [releases page](https://github.com/do
 
 7. Rescan plugins in your DAW and add "Deja Lama" as an instrument.
 
-The Linux build works; the macOS and Windows builds lack testing.
+The Linux build works in a DAW; the macOS and Windows builds compile in CI and lack testing in a DAW.
 
 ## Play
 
