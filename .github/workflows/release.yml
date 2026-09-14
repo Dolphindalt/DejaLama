@@ -1,0 +1,150 @@
+name: Release
+
+# Build the distributable bundles (the variant that fetches the original's bitmaps at first
+# launch, so the archives carry none) and publish them as a GitHub release tagged with the
+# version in Cargo.toml. Run it by hand from the Actions tab; it refuses an existing tag.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.read.outputs.version }}
+    steps:
+      - uses: actions/checkout@v7
+      - id: read
+        run: |
+          version=$(sed -n 's/^version = "\(.*\)"$/\1/p' Cargo.toml | head -1)
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if git ls-remote --exit-code --tags origin "refs/tags/v$version" >/dev/null; then
+            echo "tag v$version exists; bump the version in Cargo.toml first" >&2
+            exit 1
+          fi
+
+  build:
+    needs: version
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            name: linux-x86_64
+          - os: macos-latest
+            name: macos-universal
+          - os: windows-latest
+            name: windows-x86_64
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    env:
+      VERSION: ${{ needs.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v7
+
+      # Linux builds inside the flake's dev shell. macOS needs both Apple targets for a universal
+      # binary, which nixpkgs' rustc does not ship, so it uses rustup like Windows.
+      - if: runner.os == 'Linux'
+        uses: cachix/install-nix-action@v31
+      - if: runner.os == 'Linux'
+        uses: nix-community/cache-nix-action@v7
+        with:
+          primary-key: nix-${{ runner.os }}-${{ hashFiles('flake.lock', 'nix/**') }}
+          restore-prefixes-first-match: nix-${{ runner.os }}-
+      - if: runner.os == 'Linux'
+        uses: actions/cache@v6
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: cargo-${{ runner.os }}-${{ hashFiles('Cargo.lock') }}
+          restore-keys: cargo-${{ runner.os }}-
+
+      - if: runner.os != 'Linux'
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ runner.os == 'macOS' && 'x86_64-apple-darwin,aarch64-apple-darwin' || '' }}
+      - if: runner.os != 'Linux'
+        uses: Swatinem/rust-cache@v2
+      - if: runner.os != 'Linux'
+        run: cargo install cargo-nice-plug
+
+      - name: Bundle (Linux)
+        if: runner.os == 'Linux'
+        run: nix develop --command cargo nice-plug bundle deja_lama --release
+      - name: Bundle (macOS, universal)
+        if: runner.os == 'macOS'
+        run: cargo nice-plug bundle-universal deja_lama --release
+      - name: Bundle (Windows)
+        if: runner.os == 'Windows'
+        run: cargo nice-plug bundle deja_lama --release
+
+      - name: Check that the bundles carry no bitmaps
+        run: |
+          PY=python3; command -v python3 >/dev/null || PY=python
+          $PY - <<'PY'
+          import os, struct, sys
+          # the monk atlas's PNG header: signature, IHDR length, IHDR, 1570 x 1866
+          atlas = b"\x89PNG\r\n\x1a\n" + struct.pack(">I", 13) + b"IHDR" + struct.pack(">II", 1570, 1866)
+          bad = []
+          for root, _, files in os.walk("target/bundled"):
+              for name in files:
+                  path = os.path.join(root, name)
+                  with open(path, "rb") as f:
+                      if atlas in f.read():
+                          bad.append(path)
+          if bad:
+              print("bundles embed the original's bitmaps:", *bad, file=sys.stderr)
+              sys.exit(1)
+          print("no bitmaps in the bundles")
+          PY
+
+      - name: Archive
+        run: |
+          name="deja_lama-$VERSION-${{ matrix.name }}"
+          mkdir -p "dist/$name"
+          cp -R target/bundled/deja_lama.clap target/bundled/deja_lama.vst3 "dist/$name/"
+          cp -R presets LICENSE README.md "dist/$name/"
+          cd dist
+          case "${{ runner.os }}" in
+            Linux)   tar -czf "$name.tar.gz" "$name" ;;
+            macOS)   ditto -c -k --keepParent "$name" "$name.zip" ;;
+            Windows) powershell -Command "Compress-Archive -Path '$name' -DestinationPath '$name.zip'" ;;
+          esac
+          rm -r "$name"
+          ls -la
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: ${{ matrix.name }}
+          path: dist/*
+
+  release:
+    needs: [version, build]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      VERSION: ${{ needs.version.outputs.version }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v7
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Create the release
+        run: |
+          cat > notes.md <<NOTES
+          Deja Lama $VERSION: CLAP and VST3 bundles for Linux (x86_64), macOS (universal) and Windows (x86_64).
+
+          Unpack the archive and copy \`deja_lama.clap\` and \`deja_lama.vst3\` into your plugin folders (see README.md), then rescan in your DAW. The first time the editor opens, the plugin downloads the original Delay Lama package (1.3 MB) from the Internet Archive and keeps its bitmaps in your data folder; the bundles carry none of them. Copy the \`presets\` folder where your DAW looks for VST3 presets to get the five original programs.
+
+          The bundles are not signed. On macOS, Gatekeeper blocks them once: remove the quarantine flag with \`xattr -dr com.apple.quarantine <bundle>\` or allow them in System Settings. On Windows, SmartScreen shows a warning the first time.
+
+          NOTES
+          gh release create "v$VERSION" dist/* --title "Deja Lama $VERSION" --notes-file notes.md --generate-notes

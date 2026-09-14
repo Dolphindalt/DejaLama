@@ -36,7 +36,8 @@ cargo clippy --all-targets ; cargo fmt
 - `cargo clippy` runs at the pedantic level through the `[lints]` table; keep `suboptimal_flops` and `imprecise_flops` off, because they rewrite float arithmetic.
 - `Cargo.toml` explains its lint allowances, the `standalone` gate and the `bench` profile; keep all three as they are.
 - `nix develop` provides the toolchain, `cargo-nice-plug`, `curl` and the GL, X11, ALSA and JACK libraries. Keep the nix toolchain and a system toolchain in separate target directories (`CARGO_TARGET_DIR`); mixing them in one `target/` breaks with glibc symbol errors, and `cargo clean` fixes it.
-- CI (`.github/workflows/ci.yml`) runs every step inside `nix develop`: fmt, clippy with `-D warnings` and the tests for both variants, a standalone check and the bundle. It fetches the original package into `assets/` first and caches it, the Nix store and the cargo registry between runs, and it fails when `assets/` tracks anything beyond `.gitkeep`. Keep every step green.
+- CI (`.github/workflows/ci.yml`) runs on Linux and macOS inside `nix develop` and on Windows with rustup: fmt, clippy with `-D warnings` and the tests for both variants, a standalone check and the bundle. It fetches the original package into `assets/` first and caches it, the Nix store and the cargo registry between runs, and it fails when `assets/` tracks anything beyond `.gitkeep`. Keep every step green.
+- The release workflow (`.github/workflows/release.yml`, run by hand) builds the default variant on the three platforms (macOS universal through rustup, because nixpkgs' rustc lacks the second Apple target), checks that no bundle embeds the bitmaps, and publishes the archives as a GitHub release tagged with the version in `Cargo.toml`; it refuses a tag that exists, so bump the version first.
 
 ## Invariants
 

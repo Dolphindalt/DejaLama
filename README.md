@@ -2,7 +2,11 @@
 
 Deja Lama is the singing monk: an unofficial one-to-one re-creation of AudioNerdz' Delay Lama (2002) as a CLAP and VST3 instrument for current DAWs. Play a note and the monk sings it; move the pad and he changes pitch and vowel. It sounds like the original sample for sample and looks like it pixel for pixel.
 
-## Install
+## Download
+
+Get the archive for your platform from the [releases page](https://github.com/dolphindalt/DejaLama/releases), unpack it and copy `deja_lama.clap` and `deja_lama.vst3` into your plugin folders (step 6 below), then rescan plugins in your DAW. The bundles are unsigned: on macOS, Gatekeeper blocks them once, so remove the quarantine flag (`xattr -dr com.apple.quarantine <bundle>`) or allow them in System Settings; on Windows, SmartScreen warns once. The first time the editor opens, the plugin fetches the original's bitmaps as described in step 5.
+
+## Build from source
 
 1. Install Rust from <https://rustup.rs> (1.95 or newer). On macOS, install the Xcode command line tools first (`xcode-select --install`); on Windows, rustup asks for the Visual Studio C++ build tools.
 2. On Debian and Ubuntu, install the linker and `curl`: `sudo apt install build-essential curl`. Nix users skip steps 1 to 3: `nix develop` provides everything.

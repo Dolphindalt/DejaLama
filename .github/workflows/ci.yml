@@ -12,16 +12,25 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  PACKAGE_URL: https://archive.org/download/delay-lama-vst/Delay%20Lama.zip
+  PACKAGE_SHA256: 469ce87eb4ee80736919dd09aaa068d801de8fca4e57d6d2198c7b315ac09a40
+
 jobs:
-  check:
-    runs-on: ubuntu-latest
+  # Linux and macOS build inside the flake's dev shell; Windows uses rustup.
+  nix:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v7
 
       - uses: cachix/install-nix-action@v31
 
-      # The dev shell (rustc, cargo-nice-plug, the GL, X11, ALSA and JACK libraries) comes from
-      # flake.lock; cache the store so that later runs skip building cargo-nice-plug.
+      # The dev shell (rustc, cargo-nice-plug, the platform libraries) comes from flake.lock;
+      # cache the store so that later runs skip building cargo-nice-plug.
       - uses: nix-community/cache-nix-action@v7
         with:
           primary-key: nix-${{ runner.os }}-${{ hashFiles('flake.lock', 'nix/**') }}
@@ -35,17 +44,17 @@ jobs:
           key: cargo-${{ runner.os }}-${{ hashFiles('Cargo.lock') }}
           restore-keys: cargo-${{ runner.os }}-
 
-      # The repository ships none of the editor's bitmaps: build.rs extracts them from the
-      # original package, which the cache keeps between runs (key = the package's sha256).
+      # The repository ships none of the editor's bitmaps: the embed-assets tests extract them
+      # from the original package, which the cache keeps between runs (key = its sha256).
       - uses: actions/cache@v6
         with:
           path: assets/Delay Lama.zip
-          key: delay-lama-469ce87eb4ee80736919dd09aaa068d801de8fca4e57d6d2198c7b315ac09a40
+          key: delay-lama-${{ env.PACKAGE_SHA256 }}
       - name: Fetch the original package
         run: |
           test -f "assets/Delay Lama.zip" || nix develop --command curl --location --fail --silent --show-error \
-            --output "assets/Delay Lama.zip" "https://archive.org/download/delay-lama-vst/Delay%20Lama.zip"
-          echo "469ce87eb4ee80736919dd09aaa068d801de8fca4e57d6d2198c7b315ac09a40  assets/Delay Lama.zip" | sha256sum --check
+            --output "assets/Delay Lama.zip" "$PACKAGE_URL"
+          echo "$PACKAGE_SHA256  assets/Delay Lama.zip" | shasum -a 256 --check
 
       - name: Keep the original's files out of git
         run: test "$(git ls-files assets)" = assets/.gitkeep
@@ -57,3 +66,35 @@ jobs:
       - run: nix develop --command cargo test --features embed-assets
       - run: nix develop --command cargo check --features standalone
       - run: nix develop --command cargo nice-plug bundle deja_lama --release
+
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - uses: Swatinem/rust-cache@v2
+
+      - uses: actions/cache@v6
+        with:
+          path: assets/Delay Lama.zip
+          key: delay-lama-${{ env.PACKAGE_SHA256 }}
+      - name: Fetch the original package
+        run: |
+          test -f "assets/Delay Lama.zip" || curl.exe --location --fail --silent --show-error \
+            --output "assets/Delay Lama.zip" "$PACKAGE_URL"
+          echo "$PACKAGE_SHA256 *assets/Delay Lama.zip" | sha256sum --check
+
+      - run: cargo install cargo-nice-plug
+      - run: cargo clippy --all-targets -- -D warnings
+      - run: cargo clippy --all-targets --features embed-assets -- -D warnings
+      - run: cargo test
+      - run: cargo test --features embed-assets
+      - run: cargo check --features standalone
+      - run: cargo nice-plug bundle deja_lama --release
