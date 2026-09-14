@@ -14,7 +14,7 @@ Deja Lama is the singing monk: an unofficial one-to-one re-creation of AudioNerd
    cargo nice-plug bundle deja_lama --release
    ```
 
-   The first build compiles the dependencies (a few minutes), downloads the original Delay Lama package (1.3 MB) from the Internet Archive with `curl` and extracts its bitmaps into `assets/`; the repository does not ship them. Without network access, put `Delay Lama.zip` or `Delay Lama.dll` into `assets/` yourself, or set `DEJA_LAMA_DLL` to the DLL's path.
+   The first build compiles the dependencies (a few minutes). The bundle carries none of the original's bitmaps: the first time you open the editor, the plugin fetches the original Delay Lama package (1.3 MB) from the Internet Archive with `curl` and keeps the bitmaps in your data folder (`~/.local/share/deja-lama` on Linux, `~/Library/Application Support/Deja Lama` on macOS, `%APPDATA%\Deja Lama` on Windows). Without network access, put `Delay Lama.zip` or `Delay Lama.dll` into that folder yourself, or set `DEJA_LAMA_DLL` to the DLL's path; `DEJA_LAMA_ASSETS` moves the folder. To bake the bitmaps into the bundle instead, add `--features embed-assets`: the build then fetches the package into `assets/` the same way.
 
 6. Copy the bundles from `target/bundled/` into your plugin folders. On Linux:
 
@@ -62,4 +62,4 @@ cargo run --release --features standalone -- --backend jack
 
 ## Credits and license
 
-Deja Lama is an unofficial re-creation with no connection to AudioNerdz. The synthesis follows the original's FOF design (formant wave functions, after Xavier Rodet's CHANT at IRCAM). The source carries the MIT license; Steinberg's VST 3 terms apply to the VST3 bundle. The original's bitmaps are not part of this repository: the build fetches them from the original package onto your machine, and they remain the property of their authors.
+Deja Lama is an unofficial re-creation with no connection to AudioNerdz. The synthesis follows the original's FOF design (formant wave functions, after Xavier Rodet's CHANT at IRCAM). The source carries the MIT license; Steinberg's VST 3 terms apply to the VST3 bundle. The original's bitmaps are part of neither this repository nor the bundles it builds: the plugin fetches them from the original package onto your machine at first launch, and they remain the property of their authors.

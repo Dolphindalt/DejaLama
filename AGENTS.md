@@ -15,7 +15,8 @@ Deja Lama re-creates AudioNerdz' Delay Lama (2002), the VST2 "virtual singing mo
 | `src/shared.rs` | Atomics that carry mouth, vowel and expression from the audio thread to the editor. |
 | `src/script.rs` | Script interpreter for the regression tests and the render example. The same commands drive the DLL through a VST2 host, so that you can compare both outputs sample for sample. |
 | `src/main.rs` | Standalone entry point (feature `standalone`). |
-| `build.rs`, `assets/` | Writes the DLL's eight bitmaps to `assets/*.png` (white pixels in the three handle images carry alpha 0); its module doc lists where it takes the DLL from and the hash checks. |
+| `src/original.rs` | Obtains the DLL's eight bitmaps (white pixels in the three handle images carry alpha 0): finds or downloads the original package, checks both hashes, extracts the resources, writes PNG files. Its module doc lists the sources. |
+| `build.rs`, `assets/` | With `--features embed-assets`, runs `original` at build time into `assets/*.png` for `include_bytes!`. Without it (the default and the distributed build) the editor runs `original` on a thread at first open into the user's data folder and shows a status page until the bitmaps are there. |
 | `examples/render_script.rs` | Render a script: print its frame count and FNV-1a hash, or write the interleaved f32 output. |
 | `examples/write_presets.rs`, `presets/` | The five factory programs as VST3 preset files, generated from `engine::PROGRAMS`. Regenerate them when the parameter ids, the programs or `VST3_CLASS_ID` change. |
 | `tests/engine_regression.rs`, `tests/scripts/` | Hash tests: each script replays through the engine and its output must hash like the DLL's. Unit tests sit next to the code in `src/`. |
@@ -35,7 +36,7 @@ cargo clippy --all-targets ; cargo fmt
 - `cargo clippy` runs at the pedantic level through the `[lints]` table; keep `suboptimal_flops` and `imprecise_flops` off, because they rewrite float arithmetic.
 - `Cargo.toml` explains its lint allowances, the `standalone` gate and the `bench` profile; keep all three as they are.
 - `nix develop` provides the toolchain, `cargo-nice-plug`, `curl` and the GL, X11, ALSA and JACK libraries. Keep the nix toolchain and a system toolchain in separate target directories (`CARGO_TARGET_DIR`); mixing them in one `target/` breaks with glibc symbol errors, and `cargo clean` fixes it.
-- CI (`.github/workflows/ci.yml`) runs every step inside `nix develop`: fmt, clippy with `-D warnings`, the tests, a standalone check and the bundle. It fetches the original package into `assets/` first and caches it, the Nix store and the cargo registry between runs, and it fails when `assets/` tracks anything beyond `.gitkeep`. Keep every step green.
+- CI (`.github/workflows/ci.yml`) runs every step inside `nix develop`: fmt, clippy with `-D warnings` and the tests for both variants, a standalone check and the bundle. It fetches the original package into `assets/` first and caches it, the Nix store and the cargo registry between runs, and it fails when `assets/` tracks anything beyond `.gitkeep`. Keep every step green.
 
 ## Invariants
 
@@ -45,7 +46,7 @@ cargo clippy --all-targets ; cargo fmt
 4. Measure GUI geometry; never design it. Keep every rect and offset in `gui.rs` as template matching against captures of the DLL's window produced them, the window at 360x510, and oddities such as the fader handle at the top of its rect. Keep the control arithmetic (`knob_value_from_point`, `scaled`, the frame index) in f64 on float constants with a float store at the end: plain f32 picks a different knob frame at the ends of the range.
 5. Keep every texture at or below 2048 px per side: hosts report that limit.
 6. List every deviation from the DLL here. Current deviations: pad moves reach the host as automatable parameters instead of the MIDI note 40, CC11 and pitch bend the DLL sent; the DLL's hack that spreads pitch bends arriving at offset 0 over the block stays off; the knobs follow the host parameters, while the DLL also moved them from CC5, CC12 and CC13; the knob mode stays circular, which VST2 hosts could switch; a wildcard note off releases every key, which the DLL had no message for; sample-accurate automation splits a host block at parameter changes, so the per-block output gain follows the glide per sub-block.
-7. Never commit the original's bitmaps or package. Keep `assets/` empty in git apart from `.gitkeep`, and keep the history free of them.
+7. Never commit the original's bitmaps or package, and never distribute a bundle built with `embed-assets`. Keep `assets/` empty in git apart from `.gitkeep`, and keep the history free of them.
 
 ## Parameters and control
 

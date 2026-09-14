@@ -52,6 +52,8 @@ jobs:
 
       - run: nix develop --command cargo fmt --check
       - run: nix develop --command cargo clippy --all-targets -- -D warnings
+      - run: nix develop --command cargo clippy --all-targets --features embed-assets -- -D warnings
       - run: nix develop --command cargo test
+      - run: nix develop --command cargo test --features embed-assets
       - run: nix develop --command cargo check --features standalone
       - run: nix develop --command cargo nice-plug bundle deja_lama --release

@@ -10,6 +10,9 @@ use std::sync::atomic::Ordering;
 
 pub mod engine;
 pub mod gui;
+// the embedded variant leaves the fetching half of the module to build.rs
+#[cfg_attr(feature = "embed-assets", allow(dead_code))]
+mod original;
 pub mod script;
 pub mod shared;
 
