@@ -2,7 +2,11 @@
 
 Deja Lama is the singing monk: an unofficial one-to-one re-creation of AudioNerdz' Delay Lama (2002) as a CLAP and VST3 instrument for current DAWs. Play a note and the monk sings it; move the pad and he changes pitch and vowel. It sounds like the original sample for sample and looks like it pixel for pixel.
 
-## Install
+## Download
+
+Get the archive for your platform from the [releases page](https://github.com/dolphindalt/DejaLama/releases), unpack it and copy `deja_lama.clap` and `deja_lama.vst3` into your plugin folders (step 6 below), then rescan plugins in your DAW. The bundles are unsigned: on macOS, Gatekeeper blocks them once, so remove the quarantine flag (`xattr -dr com.apple.quarantine <bundle>`) or allow them in System Settings; on Windows, SmartScreen warns once. The first time the editor opens, the plugin fetches the original's bitmaps as described in step 5.
+
+## Build from source
 
 1. Install Rust from <https://rustup.rs> (1.95 or newer). On macOS, install the Xcode command line tools first (`xcode-select --install`); on Windows, rustup asks for the Visual Studio C++ build tools.
 2. On Debian and Ubuntu, install the linker and `curl`: `sudo apt install build-essential curl`. Nix users skip steps 1 to 3: `nix develop` provides everything.
@@ -14,7 +18,7 @@ Deja Lama is the singing monk: an unofficial one-to-one re-creation of AudioNerd
    cargo nice-plug bundle deja_lama --release
    ```
 
-   The first build compiles the dependencies (a few minutes), downloads the original Delay Lama package (1.3 MB) from the Internet Archive with `curl` and extracts its bitmaps into `assets/`; the repository does not ship them. Without network access, put `Delay Lama.zip` or `Delay Lama.dll` into `assets/` yourself, or set `DEJA_LAMA_DLL` to the DLL's path.
+   The first build compiles the dependencies (a few minutes). The bundle carries none of the original's bitmaps: the first time you open the editor, the plugin fetches the original Delay Lama package (1.3 MB) from the Internet Archive with `curl` (every platform ships it) and keeps the bitmaps in your data folder (`~/.local/share/deja-lama` on Linux, or `$XDG_DATA_HOME/deja-lama` when that is set; `~/Library/Application Support/Deja Lama` on macOS; `%LOCALAPPDATA%\Deja Lama` on Windows). Without network access, put `Delay Lama.zip` or `Delay Lama.dll` into that folder yourself, or set `DEJA_LAMA_DLL` to the DLL's path; `DEJA_LAMA_ASSETS` moves the folder. To bake the bitmaps into the bundle instead, add `--features embed-assets`: the build then fetches the package into `assets/` the same way.
 
 6. Copy the bundles from `target/bundled/` into your plugin folders. On Linux:
 
@@ -28,7 +32,7 @@ Deja Lama is the singing monk: an unofficial one-to-one re-creation of AudioNerd
 
 7. Rescan plugins in your DAW and add "Deja Lama" as an instrument.
 
-The Linux build works; the macOS and Windows builds lack testing.
+The Linux build works in a DAW; the macOS and Windows builds compile in CI and lack testing in a DAW.
 
 ## Play
 
@@ -62,4 +66,4 @@ cargo run --release --features standalone -- --backend jack
 
 ## Credits and license
 
-Deja Lama is an unofficial re-creation with no connection to AudioNerdz. The synthesis follows the original's FOF design (formant wave functions, after Xavier Rodet's CHANT at IRCAM). The source carries the MIT license; Steinberg's VST 3 terms apply to the VST3 bundle. The original's bitmaps are not part of this repository: the build fetches them from the original package onto your machine, and they remain the property of their authors.
+Deja Lama is an unofficial re-creation with no connection to AudioNerdz. The synthesis follows the original's FOF design (formant wave functions, after Xavier Rodet's CHANT at IRCAM). The source carries the MIT license; Steinberg's VST 3 terms apply to the VST3 bundle. The original's bitmaps are part of neither this repository nor the bundles it builds: the plugin fetches them from the original package onto your machine at first launch, and they remain the property of their authors.

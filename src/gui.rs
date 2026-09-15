@@ -15,6 +15,7 @@
 //! | "?" help        | CSplashScreen      | 284,300,327,335 | shows 253×275 image at 57,13 (modal)   |
 
 use crate::DejaLamaParams;
+use crate::original;
 use crate::shared::GuiShared;
 use egui::{Color32, ColorImage, Context, Pos2, Rect, TextureHandle, TextureOptions, Vec2};
 use nice_plug::context::gui::GuiContext;
@@ -22,8 +23,11 @@ use nice_plug::editor::dpi::LogicalSize;
 use nice_plug::prelude::*;
 use nice_plug_egui::baseview;
 use nice_plug_egui::{EguiEditor, EguiEditorState, EguiNiceSettings, NiceEguiApp, RepaintNotifier};
+
 use std::sync::Arc;
 use std::sync::atomic::Ordering;
+use std::sync::mpsc::{Receiver, TryRecvError};
+use std::thread::JoinHandle;
 use std::time::Duration;
 
 pub const WIDTH: u16 = 360;
@@ -198,11 +202,123 @@ struct Textures {
     help: TextureHandle,
 }
 
+impl Textures {
+    /// Upload the eight decoded bitmaps (in `original::BITMAPS` order, sizes checked by
+    /// `decode_bitmaps`) as textures.
+    fn new(ctx: &Context, images: [ColorImage; 8]) -> Self {
+        let [
+            background,
+            atlas,
+            tri_vowel,
+            tri_pitch,
+            fader_handle,
+            glide,
+            voice,
+            help,
+        ] = images;
+        let load =
+            |name: &str, image: ColorImage| ctx.load_texture(name, image, TextureOptions::NEAREST);
+        Self {
+            background: load("background", background),
+            monk: monk_frames(&atlas)
+                .into_iter()
+                .enumerate()
+                .map(|(frame, image)| load(&format!("monk_{frame}"), image))
+                .collect(),
+            tri_vowel: load("tri_vowel", tri_vowel),
+            tri_pitch: load("tri_pitch", tri_pitch),
+            fader_handle: load("fader_handle", fader_handle),
+            knob_glide: load("knob_glide", knob_grid(&glide)),
+            knob_voice: load("knob_voice", knob_grid(&voice)),
+            help: load("help", help),
+        }
+    }
+}
+
+/// The eight bitmaps' sizes, in `original::BITMAPS` order.
+const BITMAP_SIZES: [[usize; 2]; 8] = [
+    [360, 510],
+    [ATLAS_W, ATLAS_H],
+    [10, 10],
+    [10, 10],
+    [20, 17],
+    [50, 50 * KNOB_FRAMES],
+    [50, 50 * KNOB_FRAMES],
+    [253, 275],
+];
+
+/// Decode the eight PNGs and check their sizes, so that nothing after this can fail.
+fn decode_bitmaps(bitmaps: [&[u8]; 8]) -> Result<[ColorImage; 8], String> {
+    let mut images = Vec::with_capacity(8);
+    for ((bytes, size), (_, name, _)) in bitmaps.iter().zip(BITMAP_SIZES).zip(original::BITMAPS) {
+        let image = decode_png(bytes).map_err(|err| format!("{name}.png: {err}"))?;
+        if image.size != size {
+            return Err(format!(
+                "{name}.png: {}x{} instead of {}x{}",
+                image.width(),
+                image.height(),
+                size[0],
+                size[1]
+            ));
+        }
+        images.push(image);
+    }
+    images.try_into().map_err(|_| "eight bitmaps".to_owned())
+}
+
+/// Read and decode the PNG files in `dir`; a missing, truncated or foreign file is an error.
+#[cfg(not(feature = "embed-assets"))]
+fn read_images(dir: &std::path::Path) -> Result<[ColorImage; 8], String> {
+    let bitmaps = original::read_bitmaps(dir)?;
+    decode_bitmaps(bitmaps.each_ref().map(Vec::as_slice))
+}
+
+/// The loader thread's work: make sure the files exist, then decode them; extract them again
+/// once when they exist but fail to decode.
+#[cfg(not(feature = "embed-assets"))]
+fn obtain_images(dir: &std::path::Path) -> Result<[ColorImage; 8], String> {
+    original::ensure_bitmaps(dir)?;
+    if let Ok(images) = read_images(dir) {
+        return Ok(images);
+    }
+    original::remove_bitmaps(dir)?;
+    original::ensure_bitmaps(dir)?;
+    read_images(dir).map_err(|err| format!("{err}. Delete the PNG files in the folder and retry."))
+}
+
+/// The bitmaps baked into the bundle by `build.rs`.
+#[cfg(feature = "embed-assets")]
+fn embedded_bitmaps() -> [&'static [u8]; 8] {
+    [
+        include_bytes!("../assets/background.png"),
+        include_bytes!("../assets/monk_atlas.png"),
+        include_bytes!("../assets/tri_vowel.png"),
+        include_bytes!("../assets/tri_pitch.png"),
+        include_bytes!("../assets/fader_handle.png"),
+        include_bytes!("../assets/knob_glide.png"),
+        include_bytes!("../assets/knob_voice.png"),
+        include_bytes!("../assets/help.png"),
+    ]
+}
+
+/// Where the bitmaps come from at run time, and how far the loader got.
+enum Assets {
+    /// The loader thread runs: it fetches the original package into the data folder when the
+    /// bitmaps are missing, then decodes them.
+    #[cfg_attr(feature = "embed-assets", allow(dead_code))]
+    Loading {
+        receiver: Receiver<Result<[ColorImage; 8], String>>,
+        thread: Option<JoinHandle<()>>,
+    },
+    Ready(Textures),
+    Failed(String),
+}
+
 pub struct DejaLamaGui {
     params: Arc<DejaLamaParams>,
     shared: Arc<GuiShared>,
     gui_ctx: Option<GuiContext>,
-    textures: Option<Textures>,
+    assets: Option<Assets>,
     drag: Drag,
     help_shown: bool,
     knob_mode: KnobMode,
@@ -214,11 +330,110 @@ impl DejaLamaGui {
             params,
             shared,
             gui_ctx: None,
-            textures: None,
+            assets: None,
             drag: Drag::None,
             help_shown: false,
             knob_mode: KnobMode::Circular,
         }
+    }
+
+    fn textures(&self) -> Option<&Textures> {
+        match &self.assets {
+            Some(Assets::Ready(textures)) => Some(textures),
+            _ => None,
+        }
+    }
+
+    /// Take the cached bitmaps straight to textures when they are all there and decode, or
+    /// start the loader thread, which fetches and extracts them; the window shows a message
+    /// meanwhile instead of blocking. Keep a loader that already runs.
+    #[cfg(not(feature = "embed-assets"))]
+    fn load_or_start(&mut self, ctx: &Context) {
+        if let Some(Assets::Loading { .. }) = &self.assets {
+            return;
+        }
+        if let Some(dir) = original::data_dir()
+            && original::bitmaps_present(&dir)
+            && let Ok(images) = read_images(&dir)
+        {
+            self.assets = Some(Assets::Ready(Textures::new(ctx, images)));
+            return;
+        }
+        self.start_loading();
+    }
+
+    #[cfg(not(feature = "embed-assets"))]
+    fn start_loading(&mut self) {
+        let (sender, receiver) = std::sync::mpsc::channel();
+        let thread = std::thread::spawn(move || {
+            let result = original::data_dir()
+                .ok_or_else(|| "no data folder: set DEJA_LAMA_ASSETS".to_owned())
+                .and_then(|dir| obtain_images(&dir));
+            let _ = sender.send(result);
+        });
+        self.assets = Some(Assets::Loading {
+            receiver,
+            thread: Some(thread),
+        });
+    }
+
+    /// Turn a finished loader into textures, or into the error to show.
+    fn poll_loader(&mut self, ctx: &Context) {
+        let Some(Assets::Loading { receiver, thread }) = &mut self.assets else {
+            return;
+        };
+        let result = match receiver.try_recv() {
+            Ok(result) => result,
+            Err(TryRecvError::Empty) => return,
+            Err(TryRecvError::Disconnected) => Err("the loader thread stopped; retry".to_owned()),
+        };
+        if let Some(thread) = thread.take() {
+            let _ = thread.join();
+        }
+        self.assets = Some(match result {
+            Ok(images) => Assets::Ready(Textures::new(ctx, images)),
+            Err(message) => Assets::Failed(message),
+        });
+    }
+
+    /// The window while the bitmaps are not there yet: a message, and a way to retry.
+    fn draw_status(&mut self, ui: &mut egui::Ui, origin: Pos2) {
+        let window = Rect::from_min_size(origin, Vec2::new(f32::from(WIDTH), f32::from(HEIGHT)));
+        ui.painter()
+            .rect_filled(window, 0.0, Color32::from_rgb(28, 24, 20));
+        let folder =
+            original::data_dir().map_or_else(|| "?".to_owned(), |dir| dir.display().to_string());
+        let mut retry = false;
+        ui.scope_builder(egui::UiBuilder::new().max_rect(window.shrink(24.0)), |ui| {
+            ui.style_mut().visuals.override_text_color = Some(Color32::from_rgb(232, 220, 200));
+            ui.add_space(40.0);
+            ui.heading("Deja Lama");
+            ui.add_space(16.0);
+            if let Some(Assets::Failed(message)) = &self.assets {
+                ui.label("The original's bitmaps could not be fetched.");
+                ui.add_space(8.0);
+                ui.label(message.as_str());
+                ui.add_space(8.0);
+                ui.label(format!("Folder: {folder}"));
+                ui.add_space(8.0);
+                ui.label(original::HINT);
+                ui.add_space(16.0);
+                retry = ui.button("Retry").clicked();
+            } else {
+                ui.label(
+                    "Fetching the original Delay Lama package (1.3 MB) from the Internet \
+                         Archive and extracting its bitmaps.",
+                );
+                ui.add_space(8.0);
+                ui.label(format!("Folder: {folder}"));
+            }
+        });
+        #[cfg(not(feature = "embed-assets"))]
+        if retry {
+            self.start_loading();
+        }
+        #[cfg(feature = "embed-assets")]
+        let _ = retry;
     }
 }
 
@@ -235,12 +450,12 @@ pub fn create_editor(
     )
 }
 
-fn decode_png(bytes: &[u8]) -> ColorImage {
+fn decode_png(bytes: &[u8]) -> Result<ColorImage, String> {
     let mut decoder = png::Decoder::new(std::io::Cursor::new(bytes));
     decoder.set_transformations(png::Transformations::normalize_to_color8());
-    let mut reader = decoder.read_info().expect("embedded PNG");
-    let mut buf = vec![0u8; reader.output_buffer_size().expect("png size")];
-    let info = reader.next_frame(&mut buf).expect("embedded PNG frame");
+    let mut reader = decoder.read_info().map_err(|err| err.to_string())?;
+    let mut buf = vec![0u8; reader.output_buffer_size().ok_or("size overflow")?];
+    let info = reader.next_frame(&mut buf).map_err(|err| err.to_string())?;
     let (w, h) = (info.width as usize, info.height as usize);
     let rgba: Vec<u8> = match info.color_type {
         png::ColorType::Rgba => buf[..w * h * 4].to_vec(),
@@ -248,33 +463,24 @@ fn decode_png(bytes: &[u8]) -> ColorImage {
             .chunks(3)
             .flat_map(|p| [p[0], p[1], p[2], 255])
             .collect(),
-        other => panic!("unexpected PNG colour type {other:?}"),
+        other => return Err(format!("unexpected PNG colour type {other:?}")),
     };
-    ColorImage::from_rgba_unmultiplied([w, h], &rgba)
+    Ok(ColorImage::from_rgba_unmultiplied([w, h], &rgba))
 }
 
-fn load(ctx: &Context, name: &str, bytes: &[u8]) -> TextureHandle {
-    ctx.load_texture(name, decode_png(bytes), TextureOptions::NEAREST)
-}
-
-/// Split the monk atlas (5 columns × 6 rows, column-major) into 30 frame textures.
-fn load_monk_frames(ctx: &Context, bytes: &[u8]) -> Vec<TextureHandle> {
-    let atlas = decode_png(bytes);
-    assert_eq!(atlas.size, [ATLAS_W, ATLAS_H]);
+/// Split the monk atlas (5 columns × 6 rows, column-major) into its 30 frames.
+fn monk_frames(atlas: &ColorImage) -> Vec<ColorImage> {
     (0..MONK_FRAMES)
         .map(|frame| {
             let (col, row) = (frame / 6, frame % 6);
-            let img = atlas.region_by_pixels([col * FRAME_W, row * FRAME_H], [FRAME_W, FRAME_H]);
-            ctx.load_texture(format!("monk_{frame}"), img, TextureOptions::NEAREST)
+            atlas.region_by_pixels([col * FRAME_W, row * FRAME_H], [FRAME_W, FRAME_H])
         })
         .collect()
 }
 
-/// Repack a vertical film strip of `frames` square images into a `KNOB_GRID_COLS`-wide grid.
-fn load_knob_grid(ctx: &Context, name: &str, bytes: &[u8]) -> TextureHandle {
-    let strip = decode_png(bytes);
+/// Repack a vertical film strip of square frames into a `KNOB_GRID_COLS`-wide grid.
+fn knob_grid(strip: &ColorImage) -> ColorImage {
     let size = strip.width();
-    assert_eq!(strip.height(), size * KNOB_FRAMES);
     let mut grid = ColorImage::filled(
         [size * KNOB_GRID_COLS, size * KNOB_GRID_ROWS],
         Color32::TRANSPARENT,
@@ -287,7 +493,7 @@ fn load_knob_grid(ctx: &Context, name: &str, bytes: &[u8]) -> TextureHandle {
             grid.pixels[d0..d0 + size].copy_from_slice(&strip.pixels[s0..s0 + size]);
         }
     }
-    ctx.load_texture(name, grid, TextureOptions::NEAREST)
+    grid
 }
 
 /// Texture coordinates of the `CAnimKnob` frame for a knob value: frame = (int)(v·59), stored
@@ -605,7 +811,7 @@ impl DejaLamaGui {
     }
 
     fn draw(&self, ui: &egui::Ui, origin: Pos2) {
-        let Some(t) = &self.textures else {
+        let Some(t) = self.textures() else {
             return;
         };
         let painter = ui.painter();
@@ -691,6 +897,18 @@ impl DejaLamaGui {
     }
 }
 
+/// Wait for a running loader: hosts unload the module after the last instance, and a thread
+/// still inside it would crash on return.
+impl Drop for DejaLamaGui {
+    fn drop(&mut self) {
+        if let Some(Assets::Loading { thread, .. }) = &mut self.assets
+            && let Some(thread) = thread.take()
+        {
+            let _ = thread.join();
+        }
+    }
+}
+
 impl NiceEguiApp for DejaLamaGui {
     fn build(
         &mut self,
@@ -700,40 +918,13 @@ impl NiceEguiApp for DejaLamaGui {
     ) -> Result<(), baseview::HandlerError> {
         self.release(); // a drag the previous window took with it
         self.gui_ctx = Some(nice_gui_ctx);
-        self.textures = Some(Textures {
-            background: load(
-                &egui_ctx,
-                "background",
-                include_bytes!("../assets/background.png"),
-            ),
-            monk: load_monk_frames(&egui_ctx, include_bytes!("../assets/monk_atlas.png")),
-            tri_vowel: load(
-                &egui_ctx,
-                "tri_vowel",
-                include_bytes!("../assets/tri_vowel.png"),
-            ),
-            tri_pitch: load(
-                &egui_ctx,
-                "tri_pitch",
-                include_bytes!("../assets/tri_pitch.png"),
-            ),
-            fader_handle: load(
-                &egui_ctx,
-                "fader_handle",
-                include_bytes!("../assets/fader_handle.png"),
-            ),
-            knob_glide: load_knob_grid(
-                &egui_ctx,
-                "knob_glide",
-                include_bytes!("../assets/knob_glide.png"),
-            ),
-            knob_voice: load_knob_grid(
-                &egui_ctx,
-                "knob_voice",
-                include_bytes!("../assets/knob_voice.png"),
-            ),
-            help: load(&egui_ctx, "help", include_bytes!("../assets/help.png")),
-        });
+        #[cfg(feature = "embed-assets")]
+        {
+            let images = decode_bitmaps(embedded_bitmaps()).expect("build.rs checked the bitmaps");
+            self.assets = Some(Assets::Ready(Textures::new(&egui_ctx, images)));
+        }
+        #[cfg(not(feature = "embed-assets"))]
+        self.load_or_start(&egui_ctx);
         self.drag = Drag::None;
         self.help_shown = false;
         Ok(())
@@ -741,6 +932,12 @@ impl NiceEguiApp for DejaLamaGui {
 
     fn ui(&mut self, ui: &mut egui::Ui, _frame: &mut nice_plug_egui::Frame) {
         let origin = ui.max_rect().min;
+        self.poll_loader(ui.ctx());
+        if self.textures().is_none() {
+            self.draw_status(ui, origin);
+            ui.ctx().request_repaint_after(Duration::from_millis(100));
+            return;
+        }
         // reserve the whole window so that egui adds no layout of its own
         ui.allocate_rect(
             Rect::from_min_size(origin, Vec2::new(f32::from(WIDTH), f32::from(HEIGHT))),
@@ -754,7 +951,7 @@ impl NiceEguiApp for DejaLamaGui {
 
     fn editor_closed(&mut self) {
         self.release();
-        self.textures = None;
+        self.assets = None;
         self.gui_ctx = None;
     }
 }
@@ -821,49 +1018,35 @@ mod tests {
         assert_eq!(knob_frame_uv(0.5).min, Pos2::new(5.0 / 6.0, 0.4)); // frame 29
     }
 
+    #[cfg(feature = "embed-assets")]
     #[test]
     fn embedded_bitmaps_decode_at_the_measured_sizes() {
-        let expected: [(&str, &[u8], [usize; 2]); 8] = [
-            (
-                "background",
-                include_bytes!("../assets/background.png"),
-                [360, 510],
-            ),
-            (
-                "monk_atlas",
-                include_bytes!("../assets/monk_atlas.png"),
-                [ATLAS_W, ATLAS_H],
-            ),
-            (
-                "tri_vowel",
-                include_bytes!("../assets/tri_vowel.png"),
-                [10, 10],
-            ),
-            (
-                "tri_pitch",
-                include_bytes!("../assets/tri_pitch.png"),
-                [10, 10],
-            ),
-            (
-                "fader_handle",
-                include_bytes!("../assets/fader_handle.png"),
-                [20, 17],
-            ),
-            (
-                "knob_glide",
-                include_bytes!("../assets/knob_glide.png"),
-                [50, 3000],
-            ),
-            (
-                "knob_voice",
-                include_bytes!("../assets/knob_voice.png"),
-                [50, 3000],
-            ),
-            ("help", include_bytes!("../assets/help.png"), [253, 275]),
-        ];
-        for (name, bytes, size) in expected {
-            assert_eq!(decode_png(bytes).size, size, "{name}");
-        }
+        decode_bitmaps(embedded_bitmaps()).unwrap();
+    }
+
+    /// A truncated or foreign file is an error, not a panic.
+    #[test]
+    fn decode_rejects_bad_files() {
+        assert!(decode_png(b"not a png").is_err());
+        let tiny = {
+            let mut out = Vec::new();
+            let mut encoder = png::Encoder::new(&mut out, 1, 1);
+            encoder.set_color(png::ColorType::Rgba);
+            encoder.set_depth(png::BitDepth::Eight);
+            let mut writer = encoder.write_header().unwrap();
+            writer.write_image_data(&[0, 0, 0, 255]).unwrap();
+            writer.finish().unwrap();
+            out
+        };
+        let err = decode_bitmaps([tiny.as_slice(); 8]).unwrap_err();
+        assert!(
+            err.starts_with("background.png: 1x1 instead of 360x510"),
+            "{err}"
+        );
+    }
+
+    #[test]
+    fn the_atlas_holds_the_monk_frames() {
         assert_eq!(ATLAS_W, 5 * FRAME_W);
         assert_eq!(ATLAS_H, 6 * FRAME_H);
     }

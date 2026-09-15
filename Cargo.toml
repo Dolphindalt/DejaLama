@@ -1,6 +1,6 @@
 [package]
 name = "deja_lama"
-version = "1.0.0"
+version = "1.1.0"
 edition = "2024"
 rust-version = "1.95"
 description = "Unofficial one-to-one re-creation of AudioNerdz' Delay Lama (2002), the virtual singing monk, as a CLAP/VST3 instrument"
@@ -22,6 +22,9 @@ required-features = ["standalone"]
 
 [features]
 default = []
+# Bake the original's bitmaps into the bundle (build.rs fetches them). Without it the plugin
+# fetches them into the user's data folder at first launch, and the bundle carries none.
+embed-assets = []
 standalone = ["nice-plug/standalone"]
 
 [lints.rust]
@@ -35,10 +38,12 @@ suboptimal_flops = "allow"
 imprecise_flops = "allow"
 
 [dependencies]
-egui = { version = "0.36", default-features = false }
+egui = { version = "0.36", default-features = false, features = ["default_fonts"] }
 nice-plug = "0.4.1"
 nice-plug-egui = { version = "0.5.0", features = ["opengl"] }
 png = "0.18.1"
+sha2 = "0.11.0"
+zip = { version = "8.6.0", default-features = false, features = ["deflate-flate2-zlib-rs"] }
 
 # The preset writer serialises nice-plug's state format.
 [dev-dependencies]
