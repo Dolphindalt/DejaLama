@@ -45,7 +45,9 @@ jobs:
           restore-keys: cargo-${{ runner.os }}-
 
       # The repository ships none of the editor's bitmaps: the embed-assets tests extract them
-      # from the original package, which the cache keeps between runs (key = its sha256).
+      # from the original package, which the cache keeps between runs (key = its sha256). The
+      # cache expires after a week without a run, and archive.org answers 500 now and then, so
+      # retry for a few minutes; --retry-all-errors because curl may report the 500 as exit 56.
       - uses: actions/cache@v6
         with:
           path: assets/Delay Lama.zip
@@ -53,6 +55,7 @@ jobs:
       - name: Fetch the original package
         run: |
           test -f "assets/Delay Lama.zip" || curl --location --fail --silent --show-error \
+            --retry 5 --retry-delay 30 --retry-all-errors \
             --output "assets/Delay Lama.zip" "$PACKAGE_URL"
           echo "$PACKAGE_SHA256  assets/Delay Lama.zip" | shasum -a 256 --check
 
@@ -88,6 +91,7 @@ jobs:
       - name: Fetch the original package
         run: |
           test -f "assets/Delay Lama.zip" || curl.exe --location --fail --silent --show-error \
+            --retry 5 --retry-delay 30 --retry-all-errors \
             --output "assets/Delay Lama.zip" "$PACKAGE_URL"
           echo "$PACKAGE_SHA256 *assets/Delay Lama.zip" | sha256sum --check
 
